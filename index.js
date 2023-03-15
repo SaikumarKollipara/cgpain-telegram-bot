@@ -73,6 +73,6 @@ app.listen(PORT, () => {
 
 // Set the webhook for the bot
 bot.setWebHook({
-  url: process.env.PORT + `/bot${token}`
+  url: process.env.URL + `/bot${token}`
 });
 
