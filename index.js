@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 const token = process.env.BOT_TOKEN;
 
 // Create a bot instance
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token);
 
 // Listen for incoming messages
 bot.onText(/\/getresults(.+)/, (msg, match) => {
@@ -46,9 +46,8 @@ app.listen(PORT, () => {
 });
 
 // Set the webhook for the bot
-bot.setWebHook({
-    url: process.env.URL + `/bot${token}`,
-}).then(() => {
+bot.setWebHook( process.env.URL + `/bot${token}`)
+.then(() => {
     console.log("Webhook set successfully");
 }).catch((err) => {
     console.error("Error setting webhook", err);
