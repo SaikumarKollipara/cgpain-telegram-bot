@@ -1,5 +1,6 @@
 import TelegramBot from "node-telegram-bot-api";
 import express from "express";
+import bodyParser from 'body-parser'
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -28,6 +29,8 @@ bot.onText(/\/getresults(.+)/, (msg, match) => {
     `;
     bot.sendMessage(chatId, response);
 });
+
+app.use(bodyParser.json())
 
 app.get("/", (req, res) => {
     res.send({ message: "Telegram bot for CGPAIN" });
