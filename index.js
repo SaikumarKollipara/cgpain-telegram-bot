@@ -13,9 +13,9 @@ const bot = new TelegramBot(token, { polling: true });
 
 // Listen for incoming messages
 bot.onText(/\/getresults(.+)/, (msg, match) => {
-  const chatId = msg.chat.id;
-  const rollNo = match[1];
-  const response = `Results of${rollNo}:
+    const chatId = msg.chat.id;
+    const rollNo = match[1];
+    const response = `Results of${rollNo}:
 
 1-1 Sem : 9.1  
 1-2 Sem : 8.9  
@@ -26,22 +26,23 @@ bot.onText(/\/getresults(.+)/, (msg, match) => {
 4-1 Sem : 8.0  
 4-2 Sem : 9.4  
     `;
-  bot.sendMessage(chatId, response);
+    bot.sendMessage(chatId, response);
 });
 
 app.get("/", (req, res) => {
-  res.send({ message: "Telegram bot for CGPAIN" });
+    res.send({ message: "Telegram bot for CGPAIN" });
 });
 
 // Set up a webhook route
 app.post(`/bot${token}`, (req, res) => {
-  bot.processUpdate(req.body);
-  res.sendStatus(200);
+    console.log('req body', req.body)
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
 });
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Bot server listening on port ${PORT}`);
+    console.log(`Bot server listening on port ${PORT}`);
 });
 
 // Set the webhook for the bot
