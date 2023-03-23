@@ -20,7 +20,7 @@ bot.onText(/.*/, msg => {
     console.log('Message:', message);
     let response;
     if (/\/start/.test(message)) {
-        response = 'Hello, welcome to CGPA IN BOT 👋 \nTry entering your roll number to get the results of all semesters.\nTry \\help to get the list of all commands.';
+        response = 'Hello, welcome to CGPA IN BOT 👋.\nTry entering your roll number to get the results of all semesters.\n\nNOTE: Sometimes the first response may take a bit longer, so please bear with me 😊.';
         
     } else if (/^\d{3}\w\d\w\d{4}$/.test(message)) {
         // Matches rollNo
